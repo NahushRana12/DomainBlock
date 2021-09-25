@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "Productivity Extention",
   "description": "Build an Extension!",
-  "version": "1.0",
+  "version": "1",
   "manifest_version": 3,
   
   "permissions": ["storage", "activeTab", "scripting"],
