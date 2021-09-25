@@ -18,7 +18,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 20;
+const TIME_LIMIT = 600;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -42,6 +42,7 @@ document.getElementById("app").innerHTML = `
       ></path>
     </g>
   </svg>
+  
   <span id="base-timer-label" class="base-timer__label">${formatTime(
     timeLeft
   )}</span>
@@ -70,15 +71,15 @@ function startTimer() {
   }, 1000);
 }
 
-function formatTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
+function formatTime(e) {
+	 var h = Math.floor(e / 3600).toString().padStart(2,'0'),
+        m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
+        s = Math.floor(e % 60).toString().padStart(2,'0');
+    
+    //return h + ':' + m + ':' + s;
+    return `${h}:${m}:${s}`;
 
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-
-  return `${minutes}:${seconds}`;
+ 
 }
 
 function setRemainingPathColor(timeLeft) {
