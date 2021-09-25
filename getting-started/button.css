@@ -11,3 +11,21 @@ button.current {
   box-shadow: 0 0 0 2px white,
               0 0 0 4px black;
 }
+/* Sets the containers height and width */
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
