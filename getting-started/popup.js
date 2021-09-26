@@ -42,21 +42,53 @@ document.getElementById("app").innerHTML = `
       ></path>
     </g>
   </svg>
-  
-  <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeft
-  )}</span>
+  <span id="base-timer-label" class="base-timer__label">
+	${formatTime(timeLeft)}
+	</span>
+	<button id="myButton" class = "base-play">PLAY</button>
+	<button id="myButton2"  class = "base-play" >PAUSE</button>
+	<button id="myButton3"  class = "base-play" >RESET</button>
+
 </div>
 `;
 
-startTimer();
+/* startTimer(); */
 
 function onTimesUp() {
+	
   clearInterval(timerInterval);
+  timerstart = false;
+	
+	timePassed = 0;
+	timeLeft = TIME_LIMIT;
+ timerInterval = null;
+	remainingPathColor = COLOR_CODES.info.color;
+	document.getElementById("base-timer-label").innerHTML = formatTime(
+      timeLeft
+    );
 }
-
+function stop(){
+	
+	isPaused = true;console.log("SAsf");
+}
+document.getElementById("myButton").addEventListener("click", play);
+document.getElementById("myButton2").addEventListener("click", stop);
+document.getElementById("myButton3").addEventListener("click", onTimesUp);
+var isPaused = true;var timerstart = false;
+function play(){
+		isPaused = false;
+		if(timerstart == false){
+			startTimer();
+		}
+		
+}
 function startTimer() {
+	
+	isPaused = false;
+	timerstart = true;
   timerInterval = setInterval(() => {
+	 if(!isPaused) {
+    
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
@@ -68,7 +100,7 @@ function startTimer() {
     if (timeLeft === 0) {
       onTimesUp();
     }
-  }, 1000);
+  }}, 1000);
 }
 
 function formatTime(e) {

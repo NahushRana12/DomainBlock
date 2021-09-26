@@ -46,6 +46,13 @@ body {
 .base-timer__path-remaining.red {
   color: red;
 }
+.base-play{
+  position: relative;
+  margin-top: 20%
+  top: 50%;
+  width: 32%
+ 
+}
 
 .base-timer__label {
   position: absolute;
